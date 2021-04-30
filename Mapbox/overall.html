@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Top 10 Hotels for Every City</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .marker {
+        background-image: url('https://www.pinclipart.com/picdir/middle/359-3598915_map-marker-icon-location-icon-png-clipart.png');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+        max-width: 200px;
+    }
+
+.mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2luZ2hwcmF0aGFtNzIiLCJhIjoiY2tvNDVucnU0MHoyODJ3bHlkY2pjOW4wciJ9.3BgcvBRnavvfT-jIJNTQ6g';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  center: [100, 15.8],
+  zoom: 3
+});
+
+
+// code from the next step will go here!
+var geojson = {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5665212,13.73784293 ]
+    },
+    "properties": {
+    "FIELD1":"The Quarter Phromphong By UHG",
+    "FIELD2":"5.0"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5142947,13.72378414 ]
+    },
+    "properties": {
+    "FIELD1":"Mandarin Oriental Bangkok",
+    "FIELD2":"5.0"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5685918,13.72874584 ]
+    },
+    "properties": {
+    "FIELD1":"Oakwood Suites Bangkok",
+    "FIELD2":"5.0"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5521902,13.74167168 ]
+    },
+    "properties": {
+    "FIELD1":"JW Marriott Hotel Bangkok",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.562092,13.8125051 ]
+    },
+    "properties": {
+    "FIELD1":"The Quarter Ladprao by UHG",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5095423,13.71126805 ]
+    },
+    "properties": {
+    "FIELD1":"Chatrium Hotel Riverside Bangkok",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5690459,13.72948424 ]
+    },
+    "properties": {
+    "FIELD1":"SKYVIEW Hotel Bangkok",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5405643,13.75003049 ]
+    },
+    "properties": {
+    "FIELD1":"Novotel Bangkok Platinum Pratunam",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5031382,13.75186362 ]
+    },
+    "properties": {
+    "FIELD1":"Chern Hostel",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 100.5468672,13.78491335 ]
+    },
+    "properties": {
+    "FIELD1":"The Quarter Ari by UHG",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8460372,1.286023022 ]
+    },
+    "properties": {
+    "FIELD1":"PARKROYAL COLLECTION Pickering",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8586281,1.292739382 ]
+    },
+    "properties": {
+    "FIELD1":"Pan Pacific Singapore",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8530671,1.286642805 ]
+    },
+    "properties": {
+    "FIELD1":"The Fullerton Hotel Singapore",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8312322,1.306644894 ]
+    },
+    "properties": {
+    "FIELD1":"YOTEL Singapore",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8285682,1.307757424 ]
+    },
+    "properties": {
+    "FIELD1":"Orchard Hotel Singapore",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.86099,1.284891022 ]
+    },
+    "properties": {
+    "FIELD1":"Marina Bay Sands",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8513506,1.294180604 ]
+    },
+    "properties": {
+    "FIELD1":"The Capitol Kempinski Hotel Singapore",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8501217,1.29268383 ]
+    },
+    "properties": {
+    "FIELD1":"Grand Park City Hall",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8344372,1.308756276 ]
+    },
+    "properties": {
+    "FIELD1":"Goodwood Park Hotel",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 103.8601448,1.299810403 ]
+    },
+    "properties": {
+    "FIELD1":"Pan Pacific Serviced Suites Beach Road",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.7144274,3.153069376 ]
+    },
+    "properties": {
+    "FIELD1":"The RuMa Hotel and Residences",
+    "FIELD2":"5.0"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.6860054,3.133352814 ]
+    },
+    "properties": {
+    "FIELD1":"Aloft Kuala Lumpur Sentral",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.7094628,3.158699674 ]
+    },
+    "properties": {
+    "FIELD1":"W Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.6864998,3.135983391 ]
+    },
+    "properties": {
+    "FIELD1":"Le Meridien Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.7236677,3.127367442 ]
+    },
+    "properties": {
+    "FIELD1":"Sunway Velocity Hotel",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.6889263,3.136799336 ]
+    },
+    "properties": {
+    "FIELD1":"The St Regis Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.6979162,3.141245239 ]
+    },
+    "properties": {
+    "FIELD1":"Four Points by Sheraton Kuala Lumpur Chinatown",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.6923055,3.139518216 ]
+    },
+    "properties": {
+    "FIELD1":"The Majestic Hotel Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.7145138,3.147935789 ]
+    },
+    "properties": {
+    "FIELD1":"The Westin Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 101.7187012,3.159271886 ]
+    },
+    "properties": {
+    "FIELD1":"Element Kuala Lumpur",
+    "FIELD2":"4.5"
+    }
+  }
+]
+};
+
+// add markers to map
+geojson.features.forEach(function(marker) {
+
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = 'marker';
+
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.FIELD1 + '</h3><p>' + marker.properties.FIELD2 + '</p>'))
+    .addTo(map);
+});
+
+</script>
+
+</body>
+</html>
